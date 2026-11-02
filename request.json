@@ -1,0 +1,10 @@
+{
+    "RequestId": "local-test-003",
+    "AttemptNumber": 1,
+    "InputBlobName": "CodeOutput/fa_cis_osaas_bnm_merchr_productms_psm_adapter.zip",
+    "TargetFilePath": "fa_cis_osaas_bnm_merchr_productms_psm_adapter/Transformation/Mapping.cs",
+    "GeneratedTestFilePath": "Transformation/MappingTests.cs",
+    "GeneratedTestFileBlobName": "GeneratedTests/local-test-003/334b704e68344a1cb2f5705eed978c74/MappingTests.cs",
+    "ProjectRootPath": "",
+    "PreviousDiagnostics": ""
+}

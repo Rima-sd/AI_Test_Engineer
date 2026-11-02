@@ -1,0 +1,11 @@
+H:\Azure_Rima\POC\AI\AI_Test_Engineer\TestEngineer.Contracts\bin\Debug\net10.0\TestEngineer.Contracts.deps.json
+H:\Azure_Rima\POC\AI\AI_Test_Engineer\TestEngineer.Contracts\bin\Debug\net10.0\TestEngineer.Contracts.dll
+H:\Azure_Rima\POC\AI\AI_Test_Engineer\TestEngineer.Contracts\bin\Debug\net10.0\TestEngineer.Contracts.pdb
+H:\Azure_Rima\POC\AI\AI_Test_Engineer\TestEngineer.Contracts\obj\Debug\net10.0\TestEngineer.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+H:\Azure_Rima\POC\AI\AI_Test_Engineer\TestEngineer.Contracts\obj\Debug\net10.0\TestEngineer.Contracts.AssemblyInfoInputs.cache
+H:\Azure_Rima\POC\AI\AI_Test_Engineer\TestEngineer.Contracts\obj\Debug\net10.0\TestEngineer.Contracts.AssemblyInfo.cs
+H:\Azure_Rima\POC\AI\AI_Test_Engineer\TestEngineer.Contracts\obj\Debug\net10.0\TestEngineer.Contracts.csproj.CoreCompileInputs.cache
+H:\Azure_Rima\POC\AI\AI_Test_Engineer\TestEngineer.Contracts\obj\Debug\net10.0\TestEngineer.Contracts.dll
+H:\Azure_Rima\POC\AI\AI_Test_Engineer\TestEngineer.Contracts\obj\Debug\net10.0\refint\TestEngineer.Contracts.dll
+H:\Azure_Rima\POC\AI\AI_Test_Engineer\TestEngineer.Contracts\obj\Debug\net10.0\TestEngineer.Contracts.pdb
+H:\Azure_Rima\POC\AI\AI_Test_Engineer\TestEngineer.Contracts\obj\Debug\net10.0\ref\TestEngineer.Contracts.dll
