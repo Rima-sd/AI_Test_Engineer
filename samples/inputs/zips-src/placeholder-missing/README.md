@@ -1,0 +1,1 @@
+Synthetic Inspect fixture.

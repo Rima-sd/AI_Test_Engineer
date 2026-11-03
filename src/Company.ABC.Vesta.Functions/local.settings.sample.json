@@ -1,0 +1,30 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+        "VestaStorage__ConnectionString": "<LOCAL_VESTA_STORAGE_CONNECTION_STRING>",
+        "VestaStorage__BlobServiceUri": "",
+        "VestaStorage__JobsContainer": "vesta-jobs",
+        "VestaStorage__OutputContainer": "<VESTA_OUTPUT_CONTAINER>",
+        "VestaStorage__CreateContainersIfMissing": "true",
+        "VulcanStorage__BlobServiceUri": "",
+        "VulcanStorage__JobsContainer": "vulcan-jobs",
+        "VulcanStorage__OutputContainer": "vulcan-output",
+        "MinervaStorage__BlobServiceUri": "",
+        "MinervaStorage__RunsContainer": "runs",
+        "ServiceBusConnection": "<LOCAL_SERVICE_BUS_CONNECTION_STRING>",
+        "ServiceBusConnection__fullyQualifiedNamespace": "",
+        "ServiceBus__TopicName": "vesta-steps",
+        "Foundry__ProjectEndpoint": "<FOUNDRY_PROJECT_ENDPOINT>",
+        "Foundry__VestaAgentName": "<VESTA_AGENT_NAME>",
+        "Foundry__VestaAgentVersion": "<VESTA_AGENT_VERSION>",
+        "Agents__TimeoutSeconds": "600",
+        "Check__MaxRepairRounds": "2",
+        "Limits__MaxZipBytes": "52428800",
+        "Limits__MaxZipEntries": "5000",
+        "Limits__MaxZipUnpackedBytes": "209715200",
+        "Limits__MaxAgentInputBytes": "1048576",
+        "Limits__MaxTestFileBytes": "262144"
+    }
+}

@@ -1,0 +1,38 @@
+
+# Build output
+**/bin/
+**/obj/
+
+# Visual Studio Code
+.vscode/*
+!.vscode/extensions.json
+.history/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Local Azure Functions settings and secrets
+**/local.settings.json
+**/secrets.json
+.env
+.env.*
+
+# Test output
+**/TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nupkg
+*.snupkg
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# Local Azurite emulator data
+/AzuriteData/

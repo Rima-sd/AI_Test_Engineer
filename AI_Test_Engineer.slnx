@@ -1,5 +1,0 @@
-<Solution>
-  <Project Path="TestEngineer.Contracts/TestEngineer.Contracts.csproj" />
-  <Project Path="TestEngineerPOC/TestEngineerPOC.csproj" />
-  <Project Path="TestEngineerWorker/TestEngineerWorker.csproj" />
-</Solution>

@@ -1,0 +1,202 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://company.abc.vesta/schemas/agent-request.schema.json",
+    "title": "Vesta Agent Request",
+    "description": "Request sent to the Vesta test-generation agent.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "agent",
+        "requestId",
+        "jobId",
+        "contractVersions",
+        "input"
+    ],
+    "properties": {
+        "agent": {
+            "const": "vesta"
+        },
+        "requestId": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "jobId": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*-code-[0-9]{8}-[0-9]{2}-t[0-9]{2}$"
+        },
+        "contractVersions": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "agent",
+                "mapping"
+            ],
+            "properties": {
+                "agent": {
+                    "const": "0.1"
+                },
+                "mapping": {
+                    "const": "0.1"
+                }
+            }
+        },
+        "input": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "mode",
+                "testFile",
+                "package",
+                "generatedFiles",
+                "rows",
+                "testCases",
+                "previousTestFile",
+                "problems"
+            ],
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "enum": [
+                        "Initial",
+                        "Repair"
+                    ]
+                },
+                "testFile": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "path",
+                        "namespace",
+                        "className"
+                    ],
+                    "properties": {
+                        "path": {
+                            "const": "Tests/Transformation/MappingTests.cs"
+                        },
+                        "namespace": {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        "className": {
+                            "const": "MappingTests"
+                        }
+                    }
+                },
+                "package": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "Files"
+                    ],
+                    "properties": {
+                        "Files": {
+                            "type": "array",
+                            "minItems": 3,
+                            "maxItems": 3,
+                            "items": {
+                                "type": "string",
+                                "minLength": 1
+                            }
+                        }
+                    }
+                },
+                "generatedFiles": {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "path",
+                            "content"
+                        ],
+                        "properties": {
+                            "path": {
+                                "type": "string",
+                                "enum": [
+                                    "Models/InputDTO.cs",
+                                    "Models/OutputDTO.cs",
+                                    "Transformation/Mapping.cs",
+                                    "Transformation/MappingLogic.md"
+                                ]
+                            },
+                            "content": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "rows": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "rowId",
+                            "scopeId",
+                            "targetPath",
+                            "ruleType"
+                        ],
+                        "properties": {
+                            "rowId": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "scopeId": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "targetPath": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "ruleType": {
+                                "type": "string",
+                                "minLength": 1
+                            }
+                        }
+                    }
+                },
+                "testCases": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "rowId",
+                            "targetPath",
+                            "input",
+                            "expected"
+                        ],
+                        "properties": {
+                            "rowId": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "targetPath": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "input": {},
+                            "expected": {}
+                        }
+                    }
+                },
+                "previousTestFile": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "problems": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        }
+    }
+}

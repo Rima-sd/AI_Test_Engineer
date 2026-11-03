@@ -1,0 +1,262 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Vesta Job Document",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "jobId",
+        "vulcanJobId",
+        "mappingId",
+        "createdBy",
+        "createdAt",
+        "origin",
+        "project",
+        "state",
+        "round",
+        "repairRoundsUsed",
+        "inputs",
+        "check",
+        "usage",
+        "output",
+        "lastError",
+        "updatedAt"
+    ],
+    "properties": {
+        "jobId": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*-code-[0-9]{8}-[0-9]{2}-t[0-9]{2}$"
+        },
+        "vulcanJobId": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*-code-[0-9]{8}-[0-9]{2}$"
+        },
+        "mappingId": {
+            "type": "string",
+            "minLength": 1
+        },
+        "createdBy": {
+            "type": "string",
+            "minLength": 1
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "origin": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "vulcanGeneration"
+            ],
+            "properties": {
+                "vulcanGeneration": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            }
+        },
+        "project": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "fullName"
+            ],
+            "properties": {
+                "fullName": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "state": {
+            "type": "string",
+            "enum": [
+                "Received",
+                "Generating",
+                "Checking",
+                "Packaging",
+                "Done",
+                "Failed",
+                "Cancelled"
+            ]
+        },
+        "round": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "repairRoundsUsed": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "inputs": {
+            "anyOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "testCasesFound",
+                        "rowCount",
+                        "testCaseCount"
+                    ],
+                    "properties": {
+                        "testCasesFound": {
+                            "type": "boolean"
+                        },
+                        "rowCount": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "testCaseCount": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    }
+                }
+            ]
+        },
+        "check": {
+            "anyOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "round",
+                        "passed",
+                        "safe",
+                        "problemCount",
+                        "warningCount"
+                    ],
+                    "properties": {
+                        "round": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "passed": {
+                            "type": "boolean"
+                        },
+                        "safe": {
+                            "type": "boolean"
+                        },
+                        "problemCount": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "warningCount": {
+                            "type": "integer",
+                            "minimum": 0
+                        }
+                    }
+                }
+            ]
+        },
+        "usage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "agentCalls",
+                "inputTokens",
+                "outputTokens"
+            ],
+            "properties": {
+                "agentCalls": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "inputTokens": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "outputTokens": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        },
+        "output": {
+            "anyOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "zipPath",
+                        "round",
+                        "testsClean"
+                    ],
+                    "properties": {
+                        "zipPath": {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        "round": {
+                            "type": "integer",
+                            "minimum": 0
+                        },
+                        "testsClean": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            ]
+        },
+        "lastError": {
+            "anyOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "step",
+                        "code",
+                        "message",
+                        "details",
+                        "at"
+                    ],
+                    "properties": {
+                        "step": {
+                            "type": "string",
+                            "enum": [
+                                "Receive",
+                                "Generate",
+                                "Check",
+                                "Package"
+                            ]
+                        },
+                        "code": {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        "message": {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        "details": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "at": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                }
+            ]
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

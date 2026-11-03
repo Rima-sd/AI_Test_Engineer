@@ -1,0 +1,162 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://company.abc.vesta/schemas/agent-reply.schema.json",
+    "title": "Vesta Agent Reply",
+    "description": "Structured response returned by the Vesta test-generation agent.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "status",
+        "output",
+        "error"
+    ],
+    "properties": {
+        "status": {
+            "type": "string",
+            "enum": [
+                "Success",
+                "Error"
+            ]
+        },
+        "output": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "testFile",
+                        "notTestable",
+                        "findings"
+                    ],
+                    "properties": {
+                        "testFile": {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        "notTestable": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                    "rowId",
+                                    "reason"
+                                ],
+                                "properties": {
+                                    "rowId": {
+                                        "type": "string",
+                                        "minLength": 1
+                                    },
+                                    "reason": {
+                                        "type": "string",
+                                        "minLength": 1
+                                    }
+                                }
+                            }
+                        },
+                        "findings": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                    "rowId",
+                                    "note"
+                                ],
+                                "properties": {
+                                    "rowId": {
+                                        "type": "string",
+                                        "minLength": 1
+                                    },
+                                    "note": {
+                                        "type": "string",
+                                        "minLength": 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        },
+        "error": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "code",
+                        "message",
+                        "details"
+                    ],
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "enum": [
+                                "InvalidInput",
+                                "InputTooLarge",
+                                "CannotComply"
+                            ]
+                        },
+                        "message": {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        "details": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                {
+                    "type": "null"
+                }
+            ]
+        }
+    },
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "status": {
+                        "const": "Success"
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "output": {
+                        "type": "object"
+                    },
+                    "error": {
+                        "type": "null"
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "status": {
+                        "const": "Error"
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "output": {
+                        "type": "null"
+                    },
+                    "error": {
+                        "type": "object"
+                    }
+                }
+            }
+        }
+    ]
+}

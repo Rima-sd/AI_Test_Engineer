@@ -1,0 +1,35 @@
+﻿
+<!--
+Purpose: Defines the Vesta Core project, its dependencies, and embedded contract schemas.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JsonSchema.Net" Version="9.4.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\contracts\job.schema.json"
+                      LogicalName="Schemas.job.schema.json" />
+
+    <EmbeddedResource Include="..\..\contracts\step-message.schema.json"
+                      LogicalName="Schemas.step-message.schema.json" />
+
+    <EmbeddedResource Include="..\..\contracts\audit-entry.schema.json"
+                      LogicalName="Schemas.audit-entry.schema.json" />
+
+    <EmbeddedResource Include="..\..\contracts\agent-request.schema.json"
+                      LogicalName="Schemas.agent-request.schema.json" />
+
+    <EmbeddedResource Include="..\..\contracts\agent-reply.schema.json"
+                      LogicalName="Schemas.agent-reply.schema.json" />
+  </ItemGroup>
+
+</Project>

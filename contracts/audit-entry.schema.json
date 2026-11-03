@@ -1,0 +1,88 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://company.abc.vesta/schemas/audit-entry.schema.json",
+    "title": "Vesta Audit Entry",
+    "description": "Records an auditable Vesta job event.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "at",
+        "actor",
+        "actorVerified",
+        "action",
+        "details"
+    ],
+    "properties": {
+        "at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "actor": {
+            "type": "string",
+            "minLength": 1
+        },
+        "actorVerified": {
+            "type": "boolean"
+        },
+        "action": {
+            "type": "string",
+            "enum": [
+                "JobCreated",
+                "StepDone",
+                "StepFailed",
+                "Retried",
+                "Cancelled"
+            ]
+        },
+        "fromState": {
+            "type": "string",
+            "enum": [
+                "Received",
+                "Generating",
+                "Checking",
+                "Packaging",
+                "Done",
+                "Failed",
+                "Cancelled"
+            ]
+        },
+        "toState": {
+            "type": "string",
+            "enum": [
+                "Received",
+                "Generating",
+                "Checking",
+                "Packaging",
+                "Done",
+                "Failed",
+                "Cancelled"
+            ]
+        },
+        "details": {
+            "type": "object"
+        }
+    },
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "actor": {
+                        "not": {
+                            "const": "system"
+                        }
+                    }
+                },
+                "required": [
+                    "actor"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "actorVerified": {
+                        "const": false
+                    }
+                }
+            }
+        }
+    ]
+}

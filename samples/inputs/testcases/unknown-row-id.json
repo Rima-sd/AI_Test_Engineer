@@ -1,0 +1,1 @@
+{"mappingId":"price-tiers","mappingVersion":7,"cases":[{"rowId":"R999","targetPath":"Prices[*].Price","input":{"price":10.5},"expected":"10.50"}]}

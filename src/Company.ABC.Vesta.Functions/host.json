@@ -1,0 +1,17 @@
+{
+    "version": "2.0",
+    "functionTimeout": "00:30:00",
+    "extensions": {
+        "serviceBus": {
+            "autoCompleteMessages": true,
+            "maxConcurrentCalls": 4,
+            "maxAutoLockRenewalDuration": "00:30:00"
+        }
+    },
+    "logging": {
+        "logLevel": {
+            "default": "Information",
+            "Azure": "Warning"
+        }
+    }
+}

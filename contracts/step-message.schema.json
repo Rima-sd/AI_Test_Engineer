@@ -1,0 +1,48 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://company.abc.vesta/schemas/step-message.schema.json",
+    "title": "Vesta Step Message",
+    "description": "Identifies a Vesta job step to be processed.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "messageId",
+        "jobId",
+        "step",
+        "round",
+        "requestedBy",
+        "requestedAt"
+    ],
+    "properties": {
+        "messageId": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "jobId": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*-code-[0-9]{8}-[0-9]{2}-t[0-9]{2}$"
+        },
+        "step": {
+            "type": "string",
+            "enum": [
+                "Receive",
+                "Generate",
+                "Check",
+                "Package"
+            ]
+        },
+        "round": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+        },
+        "requestedBy": {
+            "type": "string",
+            "minLength": 1
+        },
+        "requestedAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}
